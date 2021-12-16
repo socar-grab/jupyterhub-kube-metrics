@@ -2,6 +2,8 @@ import os
 
 from fastapi import FastAPI, __version__
 
+from app.service import router
+
 app = FastAPI(
     title="Jupyterhub kube monitoring service",
     version=__version__,
@@ -11,3 +13,5 @@ app = FastAPI(
     ### to raise oauth2 redirect uri mismatch errors
     swagger_ui_oauth2_redirect_url=os.environ["JUPYTERHUB_OAUTH_CALLBACK_URL"],
 )
+
+app.include_router(router)
