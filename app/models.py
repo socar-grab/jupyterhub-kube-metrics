@@ -8,6 +8,9 @@ from pydantic import BaseModel
 
 
 # https://jupyterhub.readthedocs.io/en/stable/_static/rest-api/index.html
+from pydantic.fields import Field
+
+
 class Server(BaseModel):
     name: str
     ready: bool
@@ -46,3 +49,9 @@ class HubResponse(BaseModel):
 
 class HubApiError(BaseModel):
     detail: HubResponse
+
+
+class CullRequest(BaseModel):
+    allowable_idle_minutes: Optional[int] = Field(
+        default=30, env="ALLOWABLE_IDLE_MINUTES"
+    )

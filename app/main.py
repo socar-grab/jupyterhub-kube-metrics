@@ -2,7 +2,7 @@ import os
 
 from fastapi import FastAPI, __version__
 
-from app.service import router
+from app.controller import router
 
 app = FastAPI(
     title="Jupyterhub kube monitoring service",
